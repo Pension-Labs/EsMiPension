@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Home = () => {
 	const navigate = useNavigate();
 	const handleButton = () => {
-		navigate('/preguntas');
+		navigate('/simulador');
 	};
 	return (
 		<div className="flex flex-col justify-center items-center min-h-[500px]">

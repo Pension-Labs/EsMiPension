@@ -8,3 +8,13 @@ html {
 	display: flex;
 	flex-direction: column;
 }
+
+.swiper-pagination {
+	max-width: fit-content !important;
+	background-color: white;
+	bottom: 23px !important;
+	position: relative !important;
+	left: unset !important;
+	margin-left: auto;
+	margin-right: auto;
+}

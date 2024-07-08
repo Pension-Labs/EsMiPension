@@ -12,7 +12,7 @@ import Navbar from './components/Navbar';
 
 function App() {
 	return (
-		<>
+		<div className="">
 			<BrowserRouter>
 				<Navbar />
 				<Routes>
@@ -21,7 +21,7 @@ function App() {
 					<Route path="/simulador" element={<NuevoSimulador />} />
 				</Routes>
 			</BrowserRouter>
-		</>
+		</div>
 	);
 }
 

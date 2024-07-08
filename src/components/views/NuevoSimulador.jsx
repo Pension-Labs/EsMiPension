@@ -3,45 +3,44 @@ import ReactSpeedometer from 'react-d3-speedometer';
 
 const NuevoSimulador = () => {
 	const [value, setValue] = useState(0);
-	const [sliderValue, setSliderValue] = useState(0);
+	const [sliderValue1, setSliderValue1] = useState(0);
 	const [sliderValue2, setSliderValue2] = useState(0);
 	const [count, setCount] = useState(0);
 
-	const handleSlider = e => {
-		setSliderValue(Number(e.target.value));
+	const handleSlider1 = e => {
+		const newValue = Number(e.target.value);
+		setSliderValue1(newValue);
 
-		console.log('slider: ', sliderValue);
+		console.log('slider1: ', newValue);
 		console.log('valor: ', count);
 		if (value < 1000) {
-			if (sliderValue <= count) {
-				// console.log('restando: ', value)
+			if (newValue <= count) {
 				setValue(value - 100);
 			} else {
 				setValue(value + 100);
-				// console.log('sumando: ', value)
 			}
 		} else {
 			return;
 		}
-		setCount(sliderValue);
+		setCount(newValue);
 	};
-	const handleSlider2 = e => {
-		setSliderValue(Number(e.target.value));
 
-		console.log('slider: ', sliderValue2);
+	const handleSlider2 = e => {
+		const newValue = Number(e.target.value);
+		setSliderValue2(newValue);
+
+		console.log('slider2: ', newValue);
 		console.log('valor: ', count);
 		if (value < 1000) {
-			if (sliderValue2 <= count) {
-				// console.log('restando: ', value)
+			if (newValue <= count) {
 				setValue(value - 100);
 			} else {
 				setValue(value + 100);
-				// console.log('sumando: ', value)
 			}
 		} else {
 			return;
 		}
-		setCount(sliderValue2);
+		setCount(newValue);
 	};
 	return (
 		<div className="flex mx-auto w-10/12 py-6 justify-center items-center gap-y-8 text-center">
@@ -61,13 +60,13 @@ const NuevoSimulador = () => {
 				</div>
 				<div className="flex items-center">
 					<label htmlFor="customRange1" className="mr-2">
-						Cotizazción
+						Cotización
 					</label>
 					<input
 						min="0"
 						max="6"
-						value={sliderValue}
-						onChange={handleSlider}
+						value={sliderValue1}
+						onChange={handleSlider1}
 						type="range"
 						className="transparent h-1.5 w-full cursor-pointer appearance-none rounded-lg border-transparent bg-neutral-200"
 						id="customRange1"

@@ -12,8 +12,18 @@ import SwiperNextButtons from '../SwiperNextButtons';
 import SwiperBackButtons from '../SwipeBackButton';
 
 const Questions = () => {
-	const swiperRef = useRef(null);
 	const [index, setIndex] = useState(0);
+	//form input states
+	const [conyuge, setConyuge] = useState('yes');
+	const [pension, setPension] = useState('');
+	const [afp, setAfp] = useState('');
+	const [apv, setApv] = useState('');
+	const [age, setAge] = useState('');
+	const [salary, setSalary] = useState('');
+	const [gender, setGender] = useState('');
+	const [kids, setKids] = useState('');
+
+	const swiperRef = useRef(null);
 
 	return (
 		<div className="w-1/2 min-h-80 mx-auto shadow-2xl p-10 rounded-2xl border-2 border-slate-200">
@@ -28,82 +38,101 @@ const Questions = () => {
 				}}
 				onSlideChange={swiper => setIndex(swiper.activeIndex)}
 			>
-				<SwiperSlide className=" min-h-72  flex">
-					<div className="w-full flex flex-col gap-y-6 justify-center items-center">
-						<p className="text-4xl">¿Con qué pensión te quieres jubilar? </p>
-						<input
-							type="text"
-							className="py-4 px-6 w-9/12 rounded-2xl border-2 border-slate-300"
-						/>
+				<SwiperSlide className="flex items-center text-center ">
+					<div className="flex flex-col gap-y-6 justify-center items-center">
+						<p className="text-[30px] text-black font-bold font-quasimoda">
+							Una pequeña guia
+						</p>
+
+						<p className="text-[20px] text-black font-quasimoda w-10/12 md:w-full">
+							Te haremos algunas preguntas para obtener tu perfil, mientras te
+							ayudaremos a entender mas del sistema de Pensiones Chileno 🇨🇱
+						</p>
+
+						<button className="bg-primary px-[32px] py-[8px] rounded-[30px]">
+							<p
+								className="text-[20px] text-black font-quasimoda font-bold"
+								onClick={() => {
+									if (swiperRef.current) {
+										swiperRef.current.swiper.slideNext();
+									}
+								}}
+							>
+								Comenzar
+							</p>
+						</button>
+
+						<p className="text-[16px] text-gray-500 font-quasimoda">
+							🕣 1 min aprox
+						</p>
+
+						<button
+							className="bg-secondary px-[16px] py-[8px] rounded-[30px]"
+							onClick={() => setStep(2)}
+						>
+							<p className="text-[12px] text-white font-quasimoda font-bold">
+								Saltar
+							</p>
+						</button>
 					</div>
 				</SwiperSlide>
-				<SwiperSlide className="min-h-72 text-center  flex">
+
+				<SwiperSlide className="flex">
 					<div className="w-full flex flex-col gap-y-6 justify-center items-center">
-						<p className="text-4xl">¿Cuánto tienes actualmente en la AFP?</p>
-						<input
-							type="text"
-							className="py-4 px-6 w-9/12 rounded-2xl border-2 border-slate-300"
-						/>
+						<p className="text-4xl text-black ">
+							¿Con qué pensión te quieres jubilar?
+						</p>
+						<input />
 					</div>
 				</SwiperSlide>
-				<SwiperSlide className="min-h-72 text-center  flex">
+				<SwiperSlide className="text-center flex">
 					<div className="w-full flex flex-col gap-y-6 justify-center items-center">
-						<p className="text-4xl">¿Tienes saldo actualmente en APV?</p>
-						<input
-							type="text"
-							className="py-4 px-6 w-9/12 rounded-2xl border-2 border-slate-300"
-						/>
+						<p className="text-4xl text-black">
+							¿Cuánto tienes actualmente en la AFP?
+						</p>
+						<input />
 					</div>
 				</SwiperSlide>
-				<SwiperSlide className="min-h-72 text-center  flex">
+				<SwiperSlide className="text-center flex">
 					<div className="w-full flex flex-col gap-y-6 justify-center items-center">
-						<p className="text-4xl">¿Cuántos años tienes?</p>
-						<input
-							type="text"
-							className="py-4 px-6 w-9/12 rounded-2xl border-2 border-slate-300"
-						/>
+						<p className="text-4xl text-black">
+							¿Tienes saldo actualmente en APV?
+						</p>
+						<input />
 					</div>
 				</SwiperSlide>
-				<SwiperSlide className="min-h-72 text-center  flex">
+				<SwiperSlide className="text-center flex">
 					<div className="w-full flex flex-col gap-y-6 justify-center items-center">
-						<p className="text-4xl">¿Cuánto ganas actualmente?</p>
-						<input
-							type="text"
-							className="py-4 px-6 w-9/12 rounded-2xl border-2 border-slate-300"
-						/>
+						<p className="text-4xl text-black">¿Cuántos años tienes?</p>
+						<input />
 					</div>
 				</SwiperSlide>
-				<SwiperSlide className="min-h-72 text-center  flex">
+				<SwiperSlide className="text-center flex">
 					<div className="w-full flex flex-col gap-y-6 justify-center items-center">
-						<p className="text-4xl">¿Cuál es tu genero?</p>
-						<input
-							type="text"
-							className="py-4 px-6 w-9/12 rounded-2xl border-2 border-slate-300"
-						/>
+						<p className="text-4xl text-black">¿Cuánto ganas actualmente?</p>
+						<input />
 					</div>
 				</SwiperSlide>
-				<SwiperSlide className="min-h-72 text-center  flex">
+				<SwiperSlide className="text-center flex">
 					<div className="w-full flex flex-col gap-y-6 justify-center items-center">
-						<p className="text-4xl">¿Tienes conyugue?</p>
-						<input
-							type="text"
-							className="py-4 px-6 w-9/12 rounded-2xl border-2 border-slate-300"
-						/>
+						<p className="text-4xl text-black">¿Cuál es tu género?</p>
+						<input />
 					</div>
 				</SwiperSlide>
-				<SwiperSlide className="min-h-72 text-center  flex">
+				<SwiperSlide className="text-center flex">
 					<div className="w-full flex flex-col gap-y-6 justify-center items-center">
-						<p className="text-4xl">¿Cuántos hijos tienes?</p>
-						<input
-							type="text"
-							className="py-4 px-6 w-9/12 rounded-2xl border-2 border-slate-300"
-						/>
+						<p className="text-4xl text-black">¿Tienes cónyuge?</p>
+						<input />
+					</div>
+				</SwiperSlide>
+				<SwiperSlide className="text-center flex">
+					<div className="w-full flex flex-col gap-y-6 justify-center items-center">
+						<p className="text-4xl text-black">¿Cuántos hijos tienes?</p>
+						<input />
 					</div>
 				</SwiperSlide>
 				<SwiperNextButtons index={index} />
 				<SwiperBackButtons index={index} />
-				{/* <div className="bg-red-200 relative h-16 mx-auto flex items-center justify-center w-52">
-			</div> */}
 			</Swiper>
 		</div>
 	);

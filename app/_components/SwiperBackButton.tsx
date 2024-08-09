@@ -1,14 +1,14 @@
-/* eslint-disable react/prop-types */
 import { useSwiper } from 'swiper/react';
+
+//import icons
 import { RiArrowLeftSLine } from 'react-icons/ri';
-const SwiperBackButtons = ({ index }) => {
+
+interface SwiperNextButtonsProps {
+	index: number;
+}
+const SwiperBackButton: React.FC<SwiperNextButtonsProps> = ({ index }) => {
 	const swipe = useSwiper();
-	const handleSkip = () => {
-		const onBoarding = document.getElementById('onboarding');
-		const login = document.getElementById('login');
-		onBoarding.classList.add('hidden');
-		login.classList.remove('sm:hidden');
-	};
+
 	return (
 		<>
 			{index > 0 && (
@@ -23,4 +23,4 @@ const SwiperBackButtons = ({ index }) => {
 	);
 };
 
-export default SwiperBackButtons;
+export default SwiperBackButton;

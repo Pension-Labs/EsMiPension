@@ -10,15 +10,30 @@ import PensionChart from '../_components/PensionChart';
 // components
 
 export default function Home() {
+	//Form states
 	const [step, setStep] = useState(1);
 	const [conyuge, setConyuge] = useState('si');
 	const [pension, setPension] = useState(0);
 	const [afp, setAfp] = useState(0);
 	const [age, setAge] = useState(0);
-	const [gender, setGender] = useState('');
+	const [gender, setGender] = useState('M');
 	const [kids, setKids] = useState(0);
 
-	//Form states
+	//Set Moneda
+	const handlePension = (newValue: string | undefined) => {
+		if (newValue === undefined) {
+			setPension(0);
+		} else {
+			setPension(Number(newValue));
+		}
+	};
+	const handleSaldoAfp = (newValue: string | undefined) => {
+		if (newValue === undefined) {
+			setAfp(0);
+		} else {
+			setAfp(Number(newValue));
+		}
+	};
 
 	return (
 		<main className="relative flex min-h-screen flex-col items-center bg-white">
@@ -28,8 +43,8 @@ export default function Home() {
 				<Questions
 					setStep={setStep}
 					setConyuge={setConyuge}
-					setPension={setPension}
-					setAfp={setAfp}
+					handlePension={handlePension}
+					handleSaldoAfp={handleSaldoAfp}
 					setAge={setAge}
 					setGender={setGender}
 					setKids={setKids}
@@ -45,8 +60,8 @@ export default function Home() {
 					gender={gender}
 					kids={kids}
 					setConyuge={setConyuge}
-					setPension={setPension}
-					setAfp={setAfp}
+					handlePension={handlePension}
+					handleSaldoAfp={handleSaldoAfp}
 					setAge={setAge}
 					setGender={setGender}
 					setKids={setKids}

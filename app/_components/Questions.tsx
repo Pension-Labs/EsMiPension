@@ -1,4 +1,6 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState } from 'react';
+
+import CurrencyInput from 'react-currency-input-field';
 
 // react swiper
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
@@ -22,11 +24,11 @@ declare global {
 }
 
 interface QuestionsProps {
+	handlePension: (newValue: string | undefined) => void;
 	setConyuge: React.Dispatch<React.SetStateAction<string>>;
 	setGender: React.Dispatch<React.SetStateAction<string>>;
 	setStep: React.Dispatch<React.SetStateAction<number>>;
-	setPension: React.Dispatch<React.SetStateAction<number>>;
-	setAfp: React.Dispatch<React.SetStateAction<number>>;
+	handleSaldoAfp: (newValue: string | undefined) => void;
 	setAge: React.Dispatch<React.SetStateAction<number>>;
 	setKids: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -35,8 +37,8 @@ const Questions: React.FC<QuestionsProps> = ({
 	setConyuge,
 	setGender,
 	setStep,
-	setPension,
-	setAfp,
+	handlePension,
+	handleSaldoAfp,
 	setAge,
 	setKids,
 }) => {
@@ -90,10 +92,16 @@ const Questions: React.FC<QuestionsProps> = ({
 						<p className="text-[20px] text-center font-semibold text-black font-quasimoda w-10/12 md:w-full">
 							¿Cuál es tu meta?
 						</p>
-						<input
-							type="number"
-							className="focus:border-primary focus:outline-none py-4 px-6 w-24 rounded-2xl border-2 border-slate-300"
-							onChange={e => setPension(Number(e.target.value))}
+						<CurrencyInput
+							intlConfig={{ locale: 'es-CL', currency: 'CLP' }}
+							allowDecimals
+							decimalSeparator=","
+							id="input-currency-field"
+							name="input-currency-field-name"
+							prefix="$"
+							onValueChange={handlePension}
+							step={1}
+							className="focus:border-primary w-1/2 text-center focus:outline-none py-4 px-6  rounded-2xl border-2 border-slate-300"
 						/>
 					</div>
 				</SwiperSlide>
@@ -102,10 +110,16 @@ const Questions: React.FC<QuestionsProps> = ({
 						<p className="text-[20px] text-center font-semibold text-black font-quasimoda w-10/12 md:w-full">
 							¿Cuánto saldo tienes en la AFP?
 						</p>
-						<input
-							type="number"
-							className="focus:border-primary focus:outline-none py-4 px-6 w-24 rounded-2xl border-2 border-slate-300"
-							onChange={e => setAfp(Number(e.target.value))}
+						<CurrencyInput
+							intlConfig={{ locale: 'es-CL', currency: 'CLP' }}
+							allowDecimals
+							decimalSeparator=","
+							id="input-currency-field"
+							name="input-currency-field-name"
+							prefix="$"
+							onValueChange={handleSaldoAfp}
+							step={1}
+							className="focus:border-primary w-1/2 text-center focus:outline-none py-4 px-6 rounded-2xl border-2 border-slate-300"
 						/>
 					</div>
 				</SwiperSlide>
@@ -166,7 +180,7 @@ const Questions: React.FC<QuestionsProps> = ({
 									type="radio"
 									name="sexo"
 									value="M"
-									onChange={() => setConyuge('Si')}
+									onChange={() => setConyuge('si')}
 									defaultChecked
 								/>
 								<p className="font-quasimoda">Si</p>
@@ -178,7 +192,7 @@ const Questions: React.FC<QuestionsProps> = ({
 									type="radio"
 									name="sexo"
 									value="F"
-									onChange={() => setConyuge('No')}
+									onChange={() => setConyuge('no')}
 								/>
 								<p className="font-quasimoda">No</p>
 							</label>

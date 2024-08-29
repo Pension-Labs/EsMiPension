@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
 	const [mail, setMail] = useState('');
@@ -17,7 +18,8 @@ export default function Home() {
 				setCount(r.data);
 			});
 	}, []);
-
+	const router = useRouter();
+	const handlerBtn = () => router.push('/Simulator');
 	const handleSend = async () => {
 		setIsLoading(true);
 
@@ -103,7 +105,7 @@ export default function Home() {
 									? 'bg-secondary text-white'
 									: 'bg-blue-200 text-black'
 							}`}
-							onClick={handleSend}
+							onClick={handlerBtn}
 							disabled={isLoading}
 						>
 							{isLoading ? <div className="loader"></div> : 'Enviar'}

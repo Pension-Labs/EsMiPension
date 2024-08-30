@@ -105,7 +105,7 @@ export default function Home() {
 									? 'bg-secondary text-white'
 									: 'bg-blue-200 text-black'
 							}`}
-							onClick={handlerBtn}
+							onClick={handleSend}
 							disabled={isLoading}
 						>
 							{isLoading ? <div className="loader"></div> : 'Enviar'}
